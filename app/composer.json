@@ -6,9 +6,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "8pockets",
+            "homepage": "http://8pockets.com/"
         }
     ],
     "require": {
@@ -16,5 +15,10 @@
         "slim/slim": "~3.0",
         "slim/php-view": "^2.0",
         "monolog/monolog": "^1.17"
+    },
+    "autoload": {
+        "psr-7": {
+            "8pockets\\Web\\": "src"
+        }
     }
 }

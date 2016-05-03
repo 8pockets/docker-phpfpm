@@ -10,7 +10,8 @@ return [
 
         // Monolog settings
         'logger' => [
-            'name' => 'slim-app',
+            'name' => 'app',
+            'level' => Monolog\Logger::DEBUG,
             'path' => __DIR__ . '/../logs/app.log',
         ],
     ],
