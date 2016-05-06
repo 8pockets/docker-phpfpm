@@ -10,11 +10,11 @@ db:
         - 2345:3306
     environment:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: slimphp
+        MYSQL_DATABASE: slimapp
         MYSQL_USER: root
         MYSQL_PASSWORD: root
 php:
-    image: php:7.0-fpm-alpine
+    build: php-fpm
     volumes_from:
         - app
     links:
