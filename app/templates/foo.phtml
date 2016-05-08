@@ -30,7 +30,8 @@
         <?php foreach ($params_array as $param) { ?>
             <span><?php echo $param; ?></span>
         <?php } ?>
-        <p><?php echo $name; ?></p>
-        <p><?php echo $value; ?></p>
+        <?php foreach ($users as $user) { ?>
+        <p>name:<?php echo $user['name']; ?> / value:<?php echo $user['value']; ?></p>
+        <?php } ?>
     </body>
 </html>

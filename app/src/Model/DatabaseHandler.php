@@ -3,7 +3,7 @@ namespace Eightpockets\Web\Model;
 
 class DatabaseHandler
 {
-    public static function databaseHandler(){
+    public static function init(){
 
         $hostname = '172.17.0.2';
         $port     = '3306';
@@ -15,6 +15,7 @@ class DatabaseHandler
             $pdo = new \PDO("mysql:dbname=$dbname;host=$hostname;port=$port;charset=utf8",$username,$password,
                    array(\PDO::ATTR_EMULATE_PREPARES => false)
             );
+            //$app->logger->info('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
             return $pdo;
 
         } catch (\PDOException $e) {

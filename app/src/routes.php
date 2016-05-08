@@ -5,36 +5,36 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Eightpockets\Web\Model\DatabaseHandler;
 
-$app->get('/news[/{params:.*}]', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+class Route{
 
-    $args['params_array'] = explode("/", $request->getAttribute('params'));
+    /*
+    * ルーティングを設定
+    * @param object $app slimのインスタンス
+    *
+    * @return void
+    function __construct(){
+        $this->app = $app;
+    }
+    */
 
-    //insert
-    $pdo = DatabaseHandler::databaseHandler();
-/*
-    $stmt = $pdo->prepare("INSERT INTO users (id, name, value) VALUES (:id, :name, :value)");
-    $stmt->bindValue(':id', 1, \PDO::PARAM_INT);
-    $stmt->bindParam(':name', $name, \PDO::PARAM_STR);
-    $stmt->bindValue(':value', 1, \PDO::PARAM_INT);
+    /*
+    * ルーティングを設定
+    * @param object $app slimのインスタンス
+    *
+    * @return void
+    */
+    public static function addRoute($app){
 
-    $name = 'one';
-    $stmt->execute();
-*/
+        $app->get('/news[/{params:.*}]', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+            Controller\NewsController::run($request, $response, $args);
+        });
 
-    //select
-    $sql = 'select * from users';
-    $stmt = $pdo->query($sql);
+        $app->get('/[{name}]', function ($request, $response, $args) {
+            // Sample log message
+            $this->logger->info("Slim-Skeleton / route");
 
-    $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-    $args['name'] = $result['name'];
-    $args['value'] = $result['value'];
+            return $this->renderer->render($response, 'index.phtml', $args);
+        });
+    }
 
-    return $this->renderer->render($response, 'foo.phtml', $args);
-});
-
-$app->get('/[{name}]', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton / route");
-
-    return $this->renderer->render($response, 'index.phtml', $args);
-});
+}
