@@ -33,13 +33,15 @@ $container['pdo'] = function ($c) {
     $settings = $c->get('settings')['pdo'];
 
     try {
+        //DI containerにloggerを登録できた!
+        $c['logger']->info('MySQL DataBase Connection');
+
         $pdo = new \PDO("mysql:dbname=${settings['dbname']};host=${settings['hostname']};port=${settings['port']};charset=utf8",$settings['username'],$settings['password'],
                array(\PDO::ATTR_EMULATE_PREPARES => false)
         );
         return $pdo;
 
     } catch (\PDOException $e) {
-        //$this->logger->info('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
-        var_dump('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
+        $c['logger']->error('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
     }
 };

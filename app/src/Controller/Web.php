@@ -13,13 +13,12 @@ abstract class Web extends Base
     protected $args;
 
     /**
-     * construct.
+     * construct
      *
      * @return void
      */
     public function __construct($app)
     {
-//      parent::__construct();
         $this->app = $app;
     }
 

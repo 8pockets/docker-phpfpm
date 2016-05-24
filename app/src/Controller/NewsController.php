@@ -23,9 +23,6 @@ class NewsController extends Web
     {
         $this->args['params_array'] = explode("/", $this->request->getAttribute('params'));
 
-        //insert
-        //$pdo = \Eightpockets\Web\Model\DatabaseHandler::init();
-//        $pdo = $this->app->pdo();
         $pdo = $this->app->get('pdo');
 /*
         $stmt = $pdo->prepare("INSERT INTO users (id, name, value) VALUES (:id, :name, :value)");

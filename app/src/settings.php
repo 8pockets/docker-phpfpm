@@ -14,6 +14,7 @@ return [
             'level' => Monolog\Logger::DEBUG,
             'path'  => __DIR__ . '/../logs/app.log',
         ],
+
         // PDO
         'pdo' => [
             'hostname' => 'db',

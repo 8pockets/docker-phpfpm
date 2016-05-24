@@ -32,17 +32,9 @@ class Route{
          *
          * @return \Psr\Http\Message\ResponseInterface
          */
+        $app->get('/',                   '\Eightpockets\Web\Controller\TopController:run');
         $app->get('/news[/{params:.*}]', '\Eightpockets\Web\Controller\NewsController:run');
 
-/*
-        $app->get('/[{name}]', function ($request, $response, $args) {
-            // Sample log message
-            $this->logger->info("Slim-Skeleton / route");
-            //$this->getContainer()->get('logger'); も同じ意味
-
-            return $this->renderer->render($response, 'index.phtml', $args);
-        });
-*/
     }
 
 }
