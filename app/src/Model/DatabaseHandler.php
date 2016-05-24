@@ -5,7 +5,7 @@ class DatabaseHandler
 {
     public static function init(){
 
-        $hostname = '172.17.0.2';
+        $hostname = 'db';
         $port     = '3306';
         $dbname   = 'slimapp';
         $username = 'root';

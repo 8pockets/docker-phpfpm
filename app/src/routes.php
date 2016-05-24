@@ -3,7 +3,6 @@ namespace Eightpockets\Web;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Eightpockets\Web\Model\DatabaseHandler;
 
 class Route{
 
@@ -13,7 +12,6 @@ class Route{
     *
     * @return void
     function __construct(){
-        $this->app = $app;
     }
     */
 
@@ -25,16 +23,26 @@ class Route{
     */
     public static function addRoute($app){
 
-        $app->get('/news[/{params:.*}]', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
-            Controller\NewsController::run($request, $response, $args);
-        });
+        /**
+         * Example GET route
+         *
+         * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
+         * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response
+         * @param  array                                    $args Route parameters
+         *
+         * @return \Psr\Http\Message\ResponseInterface
+         */
+        $app->get('/news[/{params:.*}]', '\Eightpockets\Web\Controller\NewsController:run');
 
+/*
         $app->get('/[{name}]', function ($request, $response, $args) {
             // Sample log message
             $this->logger->info("Slim-Skeleton / route");
+            //$this->getContainer()->get('logger'); も同じ意味
 
             return $this->renderer->render($response, 'index.phtml', $args);
         });
+*/
     }
 
 }

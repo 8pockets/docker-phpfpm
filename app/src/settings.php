@@ -10,9 +10,17 @@ return [
 
         // Monolog settings
         'logger' => [
-            'name' => 'app',
+            'name'  => 'app',
             'level' => Monolog\Logger::DEBUG,
-            'path' => __DIR__ . '/../logs/app.log',
+            'path'  => __DIR__ . '/../logs/app.log',
+        ],
+        // PDO
+        'pdo' => [
+            'hostname' => 'db',
+            'port'     => '3306',
+            'dbname'   => 'slimapp',
+            'username' => 'root',
+            'password' => 'root',
         ],
     ],
 ];

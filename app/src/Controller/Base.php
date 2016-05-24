@@ -1,14 +1,12 @@
 <?php
 namespace Eightpockets\Web\Controller;
 
-use \Slim\Slim;
-
 class Base
 {
-    protected $app;
+//    protected $app;
 
-    function __construct($app){
-        $this->app = \Slim::getInstance();
+    public function __construct(){
+//        $this->app = $app;
     }
 
 }

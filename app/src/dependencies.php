@@ -26,3 +26,21 @@ $container['logger'] = function ($c) {
 
     return $logger;
 };
+
+// PDO
+$container['pdo'] = function ($c) {
+
+    $settings = $c->get('settings')['pdo'];
+
+    try {
+        $pdo = new \PDO("mysql:dbname=$dbname;host=$hostname;port=$port;charset=utf8",$username,$password,
+               array(\PDO::ATTR_EMULATE_PREPARES => false)
+        );
+        return $pdo;
+
+    } catch (\PDOException $e) {
+        //$this->logger->info('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
+        var_dump('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
+    }
+
+}
