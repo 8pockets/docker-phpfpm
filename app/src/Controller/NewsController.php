@@ -21,11 +21,12 @@ class NewsController extends Web
      */
     protected function process()
     {
-        $args['params_array'] = explode("/", $request->getAttribute('params'));
+        $this->args['params_array'] = explode("/", $this->request->getAttribute('params'));
 
         //insert
         //$pdo = \Eightpockets\Web\Model\DatabaseHandler::init();
-        $pdo = $this->pdo();
+//        $pdo = $this->app->pdo();
+        $pdo = $this->app->get('pdo');
 /*
         $stmt = $pdo->prepare("INSERT INTO users (id, name, value) VALUES (:id, :name, :value)");
         $stmt->bindValue(':id', 4, \PDO::PARAM_INT);
@@ -40,7 +41,7 @@ class NewsController extends Web
         $stmt = $pdo->query($sql);
 
         $result = $stmt->fetchALL(\PDO::FETCH_ASSOC);
-        $args['users'] = $result;
+        $this->args['users'] = $result;
 
     }
     /**
@@ -50,7 +51,7 @@ class NewsController extends Web
      */
     protected function render()
     {
-        $this->app->renderer->render($response, 'index.phtml', $args);
+        $this->app->renderer->render($this->response, 'news.phtml', $this->args);
     }
 
 }

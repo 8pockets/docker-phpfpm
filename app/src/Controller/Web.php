@@ -8,6 +8,9 @@ use Eightpockets\Web\Controller\Base;
 abstract class Web extends Base
 {
     protected $app;
+    protected $request;
+    protected $response;
+    protected $args;
 
     /**
      * construct.
@@ -46,6 +49,10 @@ abstract class Web extends Base
      */
     public function run($request, $response, $args)
     {
+        $this->request = $request;
+        $this->response = $response;
+        $this->args = $args;
+
         // main process
         try {
             $this->preprocess();

@@ -33,7 +33,7 @@ $container['pdo'] = function ($c) {
     $settings = $c->get('settings')['pdo'];
 
     try {
-        $pdo = new \PDO("mysql:dbname=$dbname;host=$hostname;port=$port;charset=utf8",$username,$password,
+        $pdo = new \PDO("mysql:dbname=${settings['dbname']};host=${settings['hostname']};port=${settings['port']};charset=utf8",$settings['username'],$settings['password'],
                array(\PDO::ATTR_EMULATE_PREPARES => false)
         );
         return $pdo;
@@ -42,5 +42,4 @@ $container['pdo'] = function ($c) {
         //$this->logger->info('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
         var_dump('Error! Can not MySQL DataBase Connection :'.$e->getMessage());
     }
-
-}
+};
