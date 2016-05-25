@@ -13,6 +13,12 @@ class TopController extends Web
      */
     protected function preprocess()
     {
+        $this->response = $this->response->withStatus(200);
+
+        $this->response = $this->response->withHeader(
+            'Content-Type',
+            'text/html;charset=utf-8'
+        );
     }
 
     /**
@@ -31,7 +37,6 @@ class TopController extends Web
      */
     protected function render()
     {
-//        var_dump(get_class($this->app));
         $this->app->renderer->render($this->response, 'index.phtml', $this->args);
     }
 

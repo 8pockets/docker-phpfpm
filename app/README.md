@@ -22,3 +22,7 @@ That's it! Now go build something cool.
 http://www.slimframework.com/docs/ 
 https://github.com/slimphp/PHP-View 
 https://github.com/Seldaek/monolog 
+
+#To DO
+PHP_CodeSniffer導入  
+
