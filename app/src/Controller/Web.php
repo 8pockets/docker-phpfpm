@@ -1,5 +1,6 @@
 <?php
 namespace Eightpockets\Web\Controller;
+
 use Eightpockets\Web\Controller\Base;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -12,7 +13,7 @@ abstract class Web extends Base
     protected $app;
     protected $request;
     protected $response;
-    protected $args;
+    protected $args = array();
 
     /**
      * construct
@@ -48,21 +49,22 @@ abstract class Web extends Base
      *
      * @return void
      */
-    public function run(Request $request, Response $response, $args)
+    public function run(Request $request, Response $response)
     {
-        $this->request = $request;
+        $this->request  = $request;
         $this->response = $response;
-        $this->args = $args;
 
         // main process
         try {
             $this->preprocess();
             $this->process();
             $this->render();
+
         } catch ( WebException $e ) {
             $this->logger->info('massage : '.$e->getStatus().$e->getMessage().$e->getFile().$e->getLine().$e->getDetail());
             return;
         }
+
         return $this->response;
     }
 

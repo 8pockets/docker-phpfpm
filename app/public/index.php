@@ -22,7 +22,8 @@ require __DIR__ . '/../src/middleware.php';
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
-\Eightpockets\Web\Route::addRoute($app);
+$route = new \Eightpockets\Web\Route($app);
+$route->addRoute();
 
 // Run app
 $app->run();

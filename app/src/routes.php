@@ -8,9 +8,10 @@ class Route{
     * @param object $app slimのインスタンス
     *
     * @return void
-    function __construct(){
-    }
     */
+    function __construct($app){
+        $this->_app = $app;
+    }
 
     /*
     * ルーティングを設定
@@ -18,7 +19,7 @@ class Route{
     *
     * @return void
     */
-    public static function addRoute($app){
+    public function addRoute(){
 
         /**
          * Example GET route
@@ -29,9 +30,15 @@ class Route{
          *
          * @return \Psr\Http\Message\ResponseInterface
          */
-        $app->get('/',                   '\Eightpockets\Web\Controller\TopController:run');
-        $app->get('/news[/{params:.*}]', '\Eightpockets\Web\Controller\NewsController:run');
+        $this->_app->get('/',                   '\Eightpockets\Web\Controller\TopController:run');
+        $this->_app->get('/news[/{params:.*}]', '\Eightpockets\Web\Controller\NewsController:run');
 
+        $this->_app->get('/hoge/{name}', function ($request, $response) {
+            $name = $request->getAttribute('name');
+            $response->getBody()->write("Hello, $name");
+
+            return $response;
+        });
     }
 
 }

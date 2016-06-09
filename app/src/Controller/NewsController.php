@@ -1,5 +1,6 @@
 <?php
 namespace Eightpockets\Web\Controller;
+
 use Eightpockets\Web\Controller\Web;
 
 class NewsController extends Web
